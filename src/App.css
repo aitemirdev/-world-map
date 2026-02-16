@@ -1,38 +1,65 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app-root {
+  height: 100vh;
+  width: 100vw;
+  background: radial-gradient(circle at top, #1e293b 0, #020617 55%);
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.title-block {
+  .title-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
 }
 
-.App-link {
-  color: #61dafb;
+/* Контейнер для планеты и сердечек */
+.planet-wrapper {
+  position: relative;
+  width: 70px;
+  height: 70px;
+ padding-left: 70px;
+}
+.heart1,
+.heart2,
+.heart3{
+  padding-left: 70px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* 3D‑планета */
+.planet {
+  width: 90px;
+  height: 90px;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg");
+  background-size: 200% 100%;
+  background-position: 0 0;
+  border-radius: 50%;
+  animation: spin3d 6s linear infinite;
+  box-shadow: 0 0 12px rgba(0,0,0,0.25);
+}
+
+/* 3D вращение */
+@keyframes spin3d {
+  from { background-position: 0 0; }
+  to { background-position: -200% 0; }
+}
+
+.heart {
+  position: absolute;
+  font-size: 18px;
+  animation: orbit 4s linear infinite;
+  opacity: 0.9;
+}
+
+/* Разные орбиты */
+.heart1 { top: -10px; left: 25px; animation-duration: 4s; }
+.heart2 { top: 25px; left: -10px; animation-duration: 5s; }
+.heart3 { top: 60px; left: 25px; animation-duration: 6s; }
+
+/* Анимация орбиты */
+@keyframes orbit {
+  0%   { transform: rotate(0deg)   translateX(35px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(35px) rotate(-360deg); }
 }
